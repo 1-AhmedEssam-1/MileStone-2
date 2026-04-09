@@ -2,8 +2,9 @@ package game.engine.monsters;
 
 import game.engine.Constants;
 import game.engine.Role;
+import game.engine.interfaces.CanisterModifier;
 
-public class Schemer extends Monster {
+public class Schemer extends Monster implements CanisterModifier{
 	
 	public Schemer(String name, String description, Role role, int energy) {
 		super(name, description, role, energy);
@@ -24,6 +25,10 @@ public class Schemer extends Monster {
 		public void executePowerupEffect(Monster opponentMonster) {
 			// TODO Auto-generated method stub
 			
+		}
+		@Override
+		public void modifyCanisterEnergy(Monster monster, int canisterValue) {
+			monster.alterEnergy(canisterValue);
 		}
 	
 }

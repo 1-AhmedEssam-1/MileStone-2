@@ -21,7 +21,6 @@ public class Dasher extends Monster {
 	@Override
 	public void executePowerupEffect(Monster opponentMonster) {
 		// TODO Auto-generated method stub
-		
 	}
 
 }
