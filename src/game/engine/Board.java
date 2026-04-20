@@ -70,4 +70,28 @@ public class Board {
 		return Board.cards.remove(0);
 	}
 	
+	private int[] indexToRowCol(int index){
+		
+		int row = index / Constants.BOARD_COLS;
+		int col = 0;
+		if ( row % 2 == 0){
+			col = index % Constants.BOARD_COLS;
+		}
+		else{
+			col = 9 - (index % Constants.BOARD_COLS);
+		}
+		return new int[]{row,col};
+	}
+	
+	 private Cell getCell(int index){
+		 int [] pos = this.indexToRowCol(index);
+		 return this.getBoardCells()[pos[0]][pos[1]];
+	 }
+	 
+	 private void setCell(int index, Cell cell){
+		 
+		 int [] pos = this.indexToRowCol(index);
+		 Cell Current_cell = this.getCell(index);
+		 Current_cell = cell;
+	 }
 }
