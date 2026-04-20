@@ -147,7 +147,6 @@ public class Board {
 	 private void setCell(int index, Cell cell){
 		 
 		 int [] pos = this.indexToRowCol(index);
-		 Cell Current_cell = this.getCell(index);
-		 Current_cell = cell;
+		 this.boardCells [pos[0]] [pos[1]] = cell;
 	 }
 }
