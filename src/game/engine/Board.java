@@ -70,4 +70,5 @@ public class Board {
 		return Board.cards.remove(0);
 	}
 	
+	
 }
