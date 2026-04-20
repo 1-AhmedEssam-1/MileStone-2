@@ -1,6 +1,8 @@
 package game.engine;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import game.engine.cards.Card;
 import game.engine.cells.*;
@@ -98,4 +100,54 @@ public class Board {
 	    boardCells[row][col].setMonster(m);
 	}
 	//end of 3ssam part 2
+	private void setCardsByRarity()
+	{
+		ArrayList<Card> oc = this.getOriginalCards();
+		ArrayList<Card> res = new ArrayList<>();
+		for(Card X : oc)
+		{
+			int i = X.getRarity(); 
+			while(i-->0)
+				res.add(X);
+		}
+		this.setCards(res);
+	}
+	public static void reloadCards()
+	{
+		Board.setCards(Board.getOriginalCards());
+		Collections.shuffle(Board.cards);
+	}
+	public static Card drawCard()
+	{
+		if(Board.cards.isEmpty())
+		{
+			Board.reloadCards();
+		}
+		return Board.cards.remove(0);
+	}
+	
+	private int[] indexToRowCol(int index){
+		
+		int row = index / Constants.BOARD_COLS;
+		int col = 0;
+		if ( row % 2 == 0){
+			col = index % Constants.BOARD_COLS;
+		}
+		else{
+			col = 9 - (index % Constants.BOARD_COLS);
+		}
+		return new int[]{row,col};
+	}
+	
+	 private Cell getCell(int index){
+		 int [] pos = this.indexToRowCol(index);
+		 return this.getBoardCells()[pos[0]][pos[1]];
+	 }
+	 
+	 private void setCell(int index, Cell cell){
+		 
+		 int [] pos = this.indexToRowCol(index);
+		 Cell Current_cell = this.getCell(index);
+		 Current_cell = cell;
+	 }
 }
