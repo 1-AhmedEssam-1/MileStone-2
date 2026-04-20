@@ -17,10 +17,19 @@ public class Dasher extends Monster {
 	public void setMomentumTurns(int momentumTurns) {
 		this.momentumTurns = momentumTurns;
 	}
-
+	
 	@Override
-	public void executePowerupEffect(Monster opponentMonster) {
-		// TODO Auto-generated method stub
+	public void move(int distance){
+		if(momentumTurns==0)super.move(2*distance);
+		else{
+			super.move(3*distance);
+			momentumTurns--;
+		}
+	}
+	
+	@Override
+	public void executePowerupEffect(Monster opponentMonster){
+		momentumTurns=3;
 	}
 
 }
