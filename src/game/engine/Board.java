@@ -1,6 +1,8 @@
 package game.engine;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import game.engine.cards.Card;
 import game.engine.cells.*;
@@ -42,4 +44,30 @@ public class Board {
 	public static void setCards(ArrayList<Card> cards) {
 		Board.cards = cards;
 	}
+	private void setCardsByRarity()
+	{
+		ArrayList<Card> oc = this.getOriginalCards();
+		ArrayList<Card> res = new ArrayList<>();
+		for(Card X : oc)
+		{
+			int i = X.getRarity(); 
+			while(i-->0)
+				res.add(X);
+		}
+		this.setCards(res);
+	}
+	public static void reloadCards()
+	{
+		Board.setCards(Board.getOriginalCards());
+		Collections.shuffle(Board.cards);
+	}
+	public static Card drawCard()
+	{
+		if(Board.cards.isEmpty())
+		{
+			Board.reloadCards();
+		}
+		return Board.cards.remove(0);
+	}
+	
 }
