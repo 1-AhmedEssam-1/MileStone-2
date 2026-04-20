@@ -2,6 +2,7 @@ package game.engine;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -157,17 +158,43 @@ public class Board {
 	 
 	 public void initializeBoard(ArrayList<Cell> specialCells) throws IOException
 	 {
-		 ArrayList<Cell> arr = DataLoader.readCells();
+		 ArrayList<Cell> belt = new ArrayList<>();
+		 ArrayList<Cell> cont = new ArrayList<>();
+		 ArrayList<Cell> door = new ArrayList<>();
+		 ArrayList<Monster> mon = this.getStationedMonsters();
+		 for(Cell c : specialCells)
+		 {
+			 if(c instanceof ConveyorBelt)
+				 belt.add(c);
+			 else if (c instanceof ContaminationSock)
+				 cont.add(c);
+			 else if (c instanceof DoorCell)
+				 door.add(c);
+		 }
+		 Collections.shuffle(belt);
+		 Collections.shuffle(cont);
+		 Collections.shuffle(door);
+		 Collections.shuffle(mon);
 		 int index = 0;
+		 
+		 
 		 for(;index<=99;index ++)
 		 {
 			 if(index%2 == 0)
-				 this.setCell(index, new Cell ("Rest Cell") );
+			 {
+				 if(Arrays.binarySearch(Constants.CONVEYOR_CELL_INDICES, index)>=0)
+					 this.setCell(index, belt.remove(0));
+				 else if(Arrays.binarySearch(Constants.SOCK_CELL_INDICES, index)>=0)
+					 this.setCell(index, cont.remove(0));
+				 else if(Arrays.binarySearch(Constants.MONSTER_CELL_INDICES, index)>=0)
+					 this.setCell(index, new MonsterCell(mon.get(0).getName()+"Name",mon.remove(0)));
+				 else if(Arrays.binarySearch(Constants.CARD_CELL_INDICES, index)>=0)
+					 this.setCell(index, new CardCell("Card Cell"));
+			 }
+				 
 			 else
 			 {
-				 if(Arrays.stream(Arrays.stream(Constants.MONSTER_CELL_INDICES).anyMatch(index ->  == 5)).anyMatch(x -> x == 5))
-				 else this.setCell(index,arr. );
-				 }
+				 this.setCell(index, door.remove(0));
 			 }
 		 }
 	 }

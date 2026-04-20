@@ -29,7 +29,7 @@ public class Game {
 			if(monster!=player && monster !=opponent) stationedMonsters.add(monster);
 		}
 		Board.setStationedMonsters(stationedMonsters);
-		//this.board.initializeBoard(DataLoader.readCells());
+		this.board.initializeBoard(DataLoader.readCells());
 	}
 	
 	public Board getBoard() {
