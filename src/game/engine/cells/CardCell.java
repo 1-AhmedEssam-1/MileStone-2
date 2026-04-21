@@ -8,9 +8,9 @@ public class CardCell extends Cell {
 	public CardCell(String name) {
         super(name);
     }
-	public void onLand(Monster landingMonster, Monster opponentMonster){
+	@Override
+	public void onLand( Monster landingMonster, Monster opponentMonster){
 		Board.drawCard().performAction(landingMonster, opponentMonster);
 	}
-	
    
 }

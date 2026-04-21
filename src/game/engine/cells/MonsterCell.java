@@ -23,14 +23,14 @@ public class MonsterCell extends Cell {
 			return;
 		}
 		
-		if(this.getMonster().getEnergy() < landingMonster.getEnergy()){
-			int tmp = landingMonster.getEnergy();
-			this.getMonster().setEnergy(tmp);
+		if(this.getCellMonster().getEnergy() < landingMonster.getEnergy()){
+			int tmp = this.getCellMonster().getEnergy();
+			this.getCellMonster().setEnergy(landingMonster.getEnergy());
 			if (landingMonster.isShielded()){
 				landingMonster.setShielded(false);
 			}
 			else{
-				landingMonster.setEnergy(this.getMonster().getEnergy());
+				landingMonster.setEnergy(tmp);
 			}
 		}
 	}

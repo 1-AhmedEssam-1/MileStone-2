@@ -96,10 +96,14 @@ public abstract class Monster implements Comparable<Monster> {
 	}
 	
 	public void move(int distance){
-		//? int destination=Math.max(this.position + distance,Constants.STARTING_POSITION);
 		//? if it moves backward the STARTING_POSITION
 	    //? setPosition(destination);
-		setPosition(this.position + distance);
+		int destination=Math.max(this.position + distance,Constants.STARTING_POSITION);
+		setPosition(destination);
+	}
+	
+	int bonus(){
+		return 0;
 	}
 	
 	int factor(){
@@ -111,7 +115,7 @@ public abstract class Monster implements Comparable<Monster> {
 			this.shielded=false;
 			return;
 		}
-		this.setEnergy(this.getEnergy()+this.factor()*energy);
+		this.setEnergy(this.getEnergy()+this.factor()*energy+this.bonus());
 	}
 	
 	public void decrementConfusion(){

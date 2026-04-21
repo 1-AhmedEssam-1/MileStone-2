@@ -25,8 +25,8 @@ public class Schemer extends Monster {
 	}
 	
 	@Override
-	public void setEnergy(int energy){
-		super.setEnergy(energy+10);
+	int bonus(){
+		return 10;
 	}
 	
 	@Override
@@ -35,7 +35,7 @@ public class Schemer extends Monster {
 		ArrayList<Monster> staionedMonsters=Board.getStationedMonsters();
 		
 		for (Monster monster : staionedMonsters){
-			this.alterEnergy(stealEnergyFrom(monster));
+			if(monster.getRole()==opponentMonster.getRole()) this.alterEnergy(stealEnergyFrom(monster));
 		}
 	}
 

@@ -20,7 +20,7 @@ public class Dasher extends Monster {
 	
 	@Override
 	public void move(int distance){
-		if(momentumTurns==0)super.move(2*distance);
+		if(momentumTurns==0) super.move(2*distance);
 		else{
 			super.move(3*distance);
 			momentumTurns--;
