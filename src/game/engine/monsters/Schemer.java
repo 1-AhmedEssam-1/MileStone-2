@@ -28,15 +28,22 @@ public class Schemer extends Monster {
 	int bonus(){
 		return 10;
 	}
-	
 	@Override
 	public void executePowerupEffect(Monster opponentMonster){
-		this.alterEnergy(stealEnergyFrom(opponentMonster));
-		ArrayList<Monster> staionedMonsters=Board.getStationedMonsters();
-		
-		for (Monster monster : staionedMonsters){
-			if(monster.getRole()==opponentMonster.getRole()) this.alterEnergy(stealEnergyFrom(monster));
-		}
+	    int totalStolen = 0;
+
+	    // seteal from opponent
+	    totalStolen += stealEnergyFrom(opponentMonster);
+
+	    //Steal from alll stationed monsters even if it is not the same role or same role all of them should be changed
+	    // 1 failure fixed here 
+	    ArrayList<Monster> stationedMonsters = Board.getStationedMonsters();
+	    for (Monster monster : stationedMonsters){
+	        if(monster != this && monster != opponentMonster){
+	            totalStolen += stealEnergyFrom(monster);
+	        }
+	    }
+	    this.alterEnergy(totalStolen);
 	}
 
 }

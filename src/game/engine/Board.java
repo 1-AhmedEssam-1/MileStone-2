@@ -54,7 +54,7 @@ public class Board {
 		int[] monsterCellInd=Constants.MONSTER_CELL_INDICES;
 		int[] cardCellInd=Constants.CARD_CELL_INDICES;
 		Cell[] res=new Cell[Constants.BOARD_SIZE];
-		Collections.shuffle(stationedMonsters);
+		Collections.shuffle(stationedMonsters);/////why there is shuffle here
 		int indmonster=0;
 		int inddoor=1;
 		int indconveyor=0;
