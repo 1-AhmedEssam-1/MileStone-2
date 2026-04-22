@@ -92,6 +92,7 @@ public class Board {
 	public void moveMonster(Monster currentMonster, int roll, Monster opponentMonster)
 			throws InvalidMoveException{
 		int Old_position = currentMonster.getPosition();
+		
 		//maybe boolean curr=currentMonster.isConfused();
 		currentMonster.move(roll);
 		int pos = currentMonster.getPosition();
@@ -112,9 +113,7 @@ public class Board {
 		}
 		if(currentMonster.isConfused()){
 			currentMonster.decrementConfusion();
-		}
-		if(opponentMonster.isConfused()){
-			opponentMonster.decrementConfusion();
+			
 		}
 		updateMonsterPositions(currentMonster,opponentMonster);
 	}

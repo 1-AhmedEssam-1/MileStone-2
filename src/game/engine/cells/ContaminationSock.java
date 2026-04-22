@@ -24,6 +24,11 @@ public class ContaminationSock extends TransportCell implements CanisterModifier
 
 	}
 	
+	/////
+	public void transport(Monster monster){
+		monster.move(this.getEffect());
+	}////added this metthod 1 failure resolved
+	
 
 }
 

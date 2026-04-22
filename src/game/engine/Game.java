@@ -28,7 +28,9 @@ public class Game {
 		for (Monster monster : allMonsters) {
 			if(monster!=player && monster !=opponent) stationedMonsters.add(monster);
 		}
+		
 		Board.setStationedMonsters(stationedMonsters);
+		this.allMonsters = stationedMonsters;//// was Failure but added
 		this.board.initializeBoard(DataLoader.readCells());
 	}
 	
@@ -92,7 +94,7 @@ public class Game {
 			 this.board.moveMonster(this.current,roll,this.getCurrentOpponent());
 		 }
 		 if(this.getWinner()==null) this.switchTurn();
-		 else System.out.println("the winner is "+this.current.getName());
+		 //else System.out.println("the winner is "+this.current.getName());
 	 }
 	 
 	 private boolean checkWinCondition(Monster monster){

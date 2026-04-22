@@ -16,23 +16,24 @@ public class MonsterCell extends Cell {
 	
 	@Override
 	public void onLand(Monster landingMonster, Monster opponentMonster){
-		
+		this.setMonster(landingMonster);
 		if (this.getCellMonster().getRole() == landingMonster.getRole()){
 			landingMonster.executePowerupEffect(opponentMonster);
 			// To check if for free
-			return;
-		}
+			
+		}else
 		
-		if(this.getCellMonster().getEnergy() < landingMonster.getEnergy()){
-			int tmp = this.getCellMonster().getEnergy();
-			this.getCellMonster().setEnergy(landingMonster.getEnergy());
-			if (landingMonster.isShielded()){
+			if(this.getCellMonster().getEnergy() < landingMonster.getEnergy()){
+				int tmp = this.getCellMonster().getEnergy();
+				this.getCellMonster().setEnergy(landingMonster.getEnergy());
+				if (!landingMonster.isShielded()) {
+		            landingMonster.setEnergy(tmp);
+		            //System.out.println(tmp);
+		        }
+
 				landingMonster.setShielded(false);
 			}
-			else{
-				landingMonster.setEnergy(tmp);
-			}
-		}
+		
 	}
 
 }

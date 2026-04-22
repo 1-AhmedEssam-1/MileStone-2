@@ -24,9 +24,13 @@ public class Schemer extends Monster {
 		return stolen;
 	}
 	
+//	@Override
+//	int bonus(){
+//		return 10;
+//	}
 	@Override
-	int bonus(){
-		return 10;
+	public void setEnergy(int energy){
+		super.setEnergy(energy+10);
 	}
 	@Override
 	public void executePowerupEffect(Monster opponentMonster){
@@ -39,9 +43,9 @@ public class Schemer extends Monster {
 	    // 1 failure fixed here 
 	    ArrayList<Monster> stationedMonsters = Board.getStationedMonsters();
 	    for (Monster monster : stationedMonsters){
-	        if(monster != this && monster != opponentMonster){
+	       
 	            totalStolen += stealEnergyFrom(monster);
-	        }
+	        
 	    }
 	    this.alterEnergy(totalStolen);
 	}
