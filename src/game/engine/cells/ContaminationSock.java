@@ -18,15 +18,16 @@ public class ContaminationSock extends TransportCell implements CanisterModifier
 	
 	@Override
 	public void onLand(Monster landingMonster, Monster opponentMonster){
+		System.out.println(landingMonster.getEnergy());
 		super.onLand(landingMonster,opponentMonster);
 		int val =  -1*Constants.SLIP_PENALTY;//// error resolved 
 		this.modifyCanisterEnergy(landingMonster, val);
-
 	}
 	
 	/////
-	public void transport(Monster monster){
-		monster.move(this.getEffect());
+	@Override
+	public void transport(Monster monster){	
+		monster.setPosition(this.getEffect()+monster.getPosition());
 	}////added this metthod 1 failure resolved
 	
 

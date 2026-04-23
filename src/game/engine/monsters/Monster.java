@@ -102,7 +102,7 @@ public abstract class Monster implements Comparable<Monster> {
 		setPosition(destination);
 	}
 	
-	int bonus(){
+	int bonus(){  	// not have a use
 		return 0;
 	}
 	
