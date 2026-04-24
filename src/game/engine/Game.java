@@ -20,8 +20,8 @@ public class Game {
 		this.board = new Board(DataLoader.readCards());
 		
 		this.allMonsters = DataLoader.readMonsters();
-		
-		this.player = selectRandomMonsterByRole(playerRole);
+		System.out.println(allMonsters);
+		this.player = selectRandomMonsterByRole(playerRole);System.out.println(player);
 		this.opponent = selectRandomMonsterByRole(playerRole == Role.SCARER ? Role.LAUGHER : Role.SCARER);
 		this.current = player;
 		ArrayList<Monster> stationedMonsters=new ArrayList<Monster>();
@@ -30,8 +30,8 @@ public class Game {
 		}
 		
 		Board.setStationedMonsters(stationedMonsters);
-		this.allMonsters = stationedMonsters;//// was Failure but added
 		this.board.initializeBoard(DataLoader.readCells());
+		
 	}
 	
 	public Board getBoard() {
@@ -88,7 +88,8 @@ public class Game {
 	 
 	 public void playTurn() throws InvalidMoveException{ //public or not?
 		 //is there method that throw new InvalidMoveException   ?
-		 if(this.current.isFrozen()) this.current.setFrozen(false);
+		 if(this.current.isFrozen())
+			 this.current.setFrozen(false);
 		 else{
 			 int roll=this.rollDice();//complete
 			 this.board.moveMonster(this.current,roll,this.getCurrentOpponent());

@@ -97,7 +97,8 @@ public class Board {
 		currentMonster.move(roll);
 		int pos = currentMonster.getPosition();
 		// simply equivalent 
-		// this.getCell(currentMonster.getPosition()).setMonster(player).onLand(currentMonster, opponentMonster);
+		// if(this.getCell(!currentMonster.getPosition()).isOccupied()) 
+		//this.getCell(currentMonster.getPosition()).onLand(currentMonster, opponentMonster);
 		
 		int row = pos / Constants.BOARD_COLS;
 		int col = pos % Constants.BOARD_COLS;
@@ -146,7 +147,7 @@ public class Board {
 			while(i-->0)
 				res.add(card);
 		}
-		originalCards=res;//not cards he said original card
+		originalCards=res;//he said originalCards not cards
 	}
 	public static void reloadCards()
 	{

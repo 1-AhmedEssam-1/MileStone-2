@@ -102,10 +102,6 @@ public abstract class Monster implements Comparable<Monster> {
 		setPosition(destination);
 	}
 	
-	int bonus(){  	// not have a use
-		return 0;
-	}
-	
 	int factor(){
 		return 1;
 	}
@@ -115,7 +111,7 @@ public abstract class Monster implements Comparable<Monster> {
 			this.shielded=false;
 			return;
 		}
-		this.setEnergy(this.getEnergy()+this.factor()*energy+this.bonus());
+		this.setEnergy(this.getEnergy()+this.factor()*energy);
 	}
 	
 	public void decrementConfusion(){
