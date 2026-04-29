@@ -107,8 +107,7 @@ public class Board {
 		    col = Constants.BOARD_COLS - 1 - col;
 		}
 		Cell landed_cell = boardCells[row][col];
-		//if(!landed_cell.isOccupied())
-		landed_cell.onLand(currentMonster, opponentMonster);
+		if(!landed_cell.isOccupied()) landed_cell.onLand(currentMonster, opponentMonster);
 		if(currentMonster.getPosition() == opponentMonster.getPosition()){
 			currentMonster.setPosition(Old_position);
 			throw new InvalidMoveException();

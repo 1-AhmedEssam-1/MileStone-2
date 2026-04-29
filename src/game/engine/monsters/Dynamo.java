@@ -9,8 +9,9 @@ public class Dynamo extends Monster {
 	}
 	
 	@Override
-	int factor(){
-		return 2;
+	public void setEnergy(int energy) {
+		int change=energy-this.getEnergy();
+		super.setEnergy(energy+change);
 	}
 	
 	@Override

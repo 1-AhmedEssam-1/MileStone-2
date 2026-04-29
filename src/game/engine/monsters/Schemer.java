@@ -15,12 +15,13 @@ public class Schemer extends Monster {
 	private int stealEnergyFrom(Monster target){
 		int val = Constants.SCHEMER_STEAL;
 		int stolen=0;
-		if(target.getEnergy()<val){
-			stolen=target.getEnergy();
+		int targetEnergy=target.getEnergy();
+		if(targetEnergy<val){
+			stolen=targetEnergy;
 		}else{
 			stolen = val;
 		}
-		target.alterEnergy(-stolen);
+		target.setEnergy(targetEnergy-stolen);
 		return stolen;
 	}
 	
