@@ -48,13 +48,12 @@ public class Board {
 	}
 	
 	public void initializeBoard(ArrayList<Cell> specialCells){
-		//Collections.shuffle(specialCells);
 		int[] conveyorCellsInd=Constants.CONVEYOR_CELL_INDICES;
 		int[] SockCellInd=Constants.SOCK_CELL_INDICES;
 		int[] monsterCellInd=Constants.MONSTER_CELL_INDICES;
 		int[] cardCellInd=Constants.CARD_CELL_INDICES;
 		Cell[] res=new Cell[Constants.BOARD_SIZE];
-		Collections.shuffle(stationedMonsters);/////why there is shuffle here
+		//Collections.shuffle(stationedMonsters);/////why there is shuffle here
 		int indmonster=0;
 		int inddoor=1;
 		int indconveyor=0;
@@ -107,8 +106,8 @@ public class Board {
 		    col = Constants.BOARD_COLS - 1 - col;
 		}
 		Cell landed_cell = boardCells[row][col];
-		//if(!landed_cell.isOccupied())
-		landed_cell.onLand(currentMonster, opponentMonster);
+		if(!landed_cell.isOccupied())
+			landed_cell.onLand(currentMonster, opponentMonster);
 		if(currentMonster.getPosition() == opponentMonster.getPosition()){
 			currentMonster.setPosition(Old_position);
 			throw new InvalidMoveException();
@@ -148,7 +147,7 @@ public class Board {
 			while(i-->0)
 				res.add(card);
 		}
-		originalCards=res;//he said originalCards not cards
+		originalCards=res;
 	}
 	public static void reloadCards()
 	{

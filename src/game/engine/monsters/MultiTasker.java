@@ -28,10 +28,7 @@ public class MultiTasker extends Monster {
 		}
 	}
 	
-//	@Override
-//	int bonus(){
-//		return Constants.MULTITASKER_BONUS;
-//	}
+
 	@Override
 	public void setEnergy(int energy){
 		super.setEnergy(energy+Constants.MULTITASKER_BONUS);

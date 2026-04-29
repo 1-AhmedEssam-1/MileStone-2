@@ -8,9 +8,9 @@ public class Dynamo extends Monster {
 		super(name, description, role, energy);
 	}
 	
-	@Override
-	int factor(){
-		return 2;
+	public void setEnergy(int energy) {
+		int change = energy - this.getEnergy();
+		super.setEnergy(change+ energy);
 	}
 	
 	@Override

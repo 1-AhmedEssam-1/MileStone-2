@@ -78,7 +78,7 @@ public class Game {
 		 this.current=this.getCurrentOpponent();
 	 }
 
-	 public void usePowerup() throws OutOfEnergyException{ //public or not?
+	 public void usePowerup() throws OutOfEnergyException{ 
 		if(this.current.getEnergy()>=Constants.POWERUP_COST){
 			this.current.alterEnergy(-1*Constants.POWERUP_COST);
 			this.current.executePowerupEffect(this.getCurrentOpponent());
@@ -86,7 +86,7 @@ public class Game {
 
 	 }
 
-	 public void playTurn() throws InvalidMoveException{ //public or not?
+	 public void playTurn() throws InvalidMoveException{ 
 		 //is there method that throw new InvalidMoveException   ?
 		 if(this.current.isFrozen())
 			 this.current.setFrozen(false);
@@ -94,7 +94,8 @@ public class Game {
 			 int roll=this.rollDice();//complete
 			 this.board.moveMonster(this.current,roll,this.getCurrentOpponent());
 		 }
-		 if(this.getWinner()==null) this.switchTurn();
+		 if(this.getWinner()==null) 
+			 this.switchTurn();
 		 //end game
 		 //else System.out.println("the winner is "+this.current.getName());
 	 }
@@ -104,7 +105,7 @@ public class Game {
 				 &&(monster.getEnergy()>=Constants.WINNING_ENERGY);
 	 }
 
-	 public Monster getWinner(){ //public or not? --> default
+	 public Monster getWinner(){ 
 		if(this.checkWinCondition(current))return this.current;
 		else if(this.checkWinCondition(this.getCurrentOpponent()))return this.getCurrentOpponent();
 		else return null;

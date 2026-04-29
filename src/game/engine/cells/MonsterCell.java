@@ -25,21 +25,9 @@ public class MonsterCell extends Cell {
 		}else if(this.getCellMonster().getEnergy() < landingMonster.getEnergy()){
 			int energyChange = landingMonster.getEnergy()-cellMonster.getEnergy();
 			cellMonster.alterEnergy(energyChange);
-			if (landingMonster.isShielded()) {
-				landingMonster.alterEnergy(-1*energyChange);
-				landingMonster.setShielded(true);//it is not if the shield would remains or not
-			}else{
-				landingMonster.alterEnergy(-1*energyChange);
-			}
-			
+			landingMonster.alterEnergy(-1*energyChange);
 		}
-//			if (!landingMonster.isShielded()) {
-//	            landingMonster.setEnergy(tmp);
-//	            //System.out.println(tmp);
-//	    }else
-//
-//				landingMonster.setShielded(false);
-//			}
+
 		
 	}
 
