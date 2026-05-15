@@ -25,10 +25,7 @@ public class Schemer extends Monster {
 		return stolen;
 	}
 	
-//	@Override
-//	int bonus(){
-//		return 10;
-//	}
+
 	@Override
 	public void setEnergy(int energy){
 		super.setEnergy(energy+10);
@@ -37,8 +34,9 @@ public class Schemer extends Monster {
 	public void executePowerupEffect(Monster opponentMonster){
 	    int totalStolen = 0;
 
-	    // seteal from opponent
-	    totalStolen += stealEnergyFrom(opponentMonster);
+	    // seteal from opponent//////                           
+	    totalStolen += Math.min(Constants.SCHEMER_STEAL,opponentMonster.getEnergy());
+	    opponentMonster.setEnergy(opponentMonster.getEnergy()-Constants.SCHEMER_STEAL);
 
 	    //Steal from alll stationed monsters even if it is not the same role or same role all of them should be changed
 	    // 1 failure fixed here 

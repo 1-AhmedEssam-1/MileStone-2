@@ -102,6 +102,10 @@ public abstract class Monster implements Comparable<Monster> {
 		setPosition(destination);
 	}
 	
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0cbc973323da0bc9c46728ded0a138612b80d15e
 	public final void alterEnergy(int energy){
 		if(energy<0 && shielded){
 			this.shielded=false;
